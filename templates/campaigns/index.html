@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   <h1 class="text-center mb-3">Poll Campaigns</h1>
+  Number of Campagins for User: {{ len }}
   {% if campaign_queryset %}
     {% for campaign in campaign_queryset %}
       <div class="card mb-3">
