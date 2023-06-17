@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Question, Choice
+from .models import Campaign, Choice
 
-admin.site.site_header = "e-voting Admin"
-admin.site.site_title = "e-voting Admin Area"
-admin.site.index_title = "Welcome to the e-voting admin area"
+admin.site.site_header = "Campagin Admin"
+admin.site.site_title = "Campagin Admin Area"
+admin.site.index_title = "Welcome to the e-voting Campaign Are"
 
 
 class ChoiceInline(admin.TabularInline):
@@ -12,12 +12,13 @@ class ChoiceInline(admin.TabularInline):
     extra = 3
 
 
-class QuestionAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['question_text']}),
-                 ('Date Information', {'fields': ['pub_date'], 'classes': ['collapse']}), ]
+class CampaignAdmin(admin.ModelAdmin):
+    fieldsets = [(None, {'fields': ['campaign_text']}),
+                #  ('Date Information', {'fields': ['created_on'], 'classes': ['collapse']}), 
+                 ]
     inlines = [ChoiceInline]
 
 
-# admin.site.register(Question)
+# admin.site.register(Campaign)
 # admin.site.register(Choice)
-admin.site.register(Question, QuestionAdmin)
+admin.site.register(Campaign, CampaignAdmin)

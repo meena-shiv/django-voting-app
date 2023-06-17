@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="mb-5 text-center">{{ question.question_text }}</h1>
+<h1 class="mb-5 text-center">{{ campaign.campaign_text }}</h1>
 
 <ul class="list-group mb-5">
-	{% for choice in question.choice_set.all %}
+	{% for choice in campaign.choice_set.all %}
 	<li class="list-group-item">
 		{{ choice.choice_text }}  <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
 	</li>
@@ -14,7 +14,7 @@
 <div id="winner mb-5">Winner: Shiva</div>
 
 <div class="mb-4 mx-4">
-<a class="btn btn-info ml-4" href="{% url 'campaigns:index' %}">Back To campaigns</a>
+<a class="btn btn-info ml-4" href="{% url 'campaigns:home' %}">Back To campaigns</a>
 </div>
 
 {% endblock %}
