@@ -3,13 +3,15 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
+from users.models import Profile
 
 def register(request):
 
     if request.method == 'POST': # This is a POST Request
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            obj = form.save()
+            Profile.objects.create(user = obj)
             username = form.cleaned_data.get('username')  # Grab the username that is submitted for now
             messages.success(request, f'Account created for {username}!')
             return redirect('login')
