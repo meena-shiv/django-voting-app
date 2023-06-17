@@ -1,12 +1,12 @@
 from django.urls import path
 
-from . import views
+from .views import home,detail,results,vote,resultsData
 
 app_name = 'campaigns'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('<int:question_id>/', views.detail, name='detail'),
-    path('<int:question_id>/results/', views.results, name='results'),
-    path('<int:question_id>/vote/', views.vote, name='vote'),
-    path('resultsdata/<str:obj>/', views.resultsData, name='resultsdata'),
+    path('',   home, name='home'),
+    path('<int:campaign_id>/',   detail, name='campaign_detail'),
+    path('<int:campaign_id>/results/',   results, name='campaign_results'),
+    path('<int:campaign_id>/vote/',   vote, name='campaign_vote'),
+    path('resultsdata/<str:obj>/',   resultsData, name='campaign_resultsdata'),
 ]

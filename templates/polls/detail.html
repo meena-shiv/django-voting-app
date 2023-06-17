@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<a class="btn btn-secondary btn-sm mb-3" href="{% url 'campaigns:index' %}">Back To campaigns</a>
-<h1 class="text-center mb-3">{{ question.question_text }}</h1>
+<a class="btn btn-secondary btn-sm mb-3" href="{% url 'campaigns:home' %}">Back To campaigns</a>
+<h1 class="text-center mb-3">{{ campaign.campaign_text }}</h1>
 
 {% if error_message %}
 <p class="alert alert-danger">
@@ -9,9 +9,9 @@
 </p>
 {% endif %}
 
-<form action="{% url 'campaigns:vote' question.id %}" method="post">
+<form action="{% url 'campaigns:campaign_vote' campaign.id %}" method="post">
 	{% csrf_token %} 
-	{% for choice in question.choice_set.all %}
+	{% for choice in campaign.choice_set.all %}
 		<div class="form-check">
 			<input
 				type="radio"
