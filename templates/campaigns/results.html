@@ -4,9 +4,9 @@
 <h1 class="mb-5 text-center">{{ campaign.campaign_text }}</h1>
 
 <ul class="list-group mb-5">
-	{% for choice in campaign.choice_set.all %}
+	{% for key, value in result.items %}
 	<li class="list-group-item">
-		{{ choice.choice_text }}  <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
+		{{ key }}  <span class="badge badge-success float-right">{{ value }} vote{{ value | pluralize }}</span>
 	</li>
 	{% endfor %}
 </ul>

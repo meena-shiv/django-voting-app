@@ -32,11 +32,16 @@ def detail(request, campaign_id):
 # Get campaign and display results
 @login_required
 def results(request, campaign_id):
+  result={}
   campaign = get_object_or_404(Campaign, pk=campaign_id)
-  votes=CampaignVote.objects.filter(campaign=campaign).annotate(votes=Count(id)).values('candiate','votes')
-  print(votes)
+  for i in CampaignVote.objects.filter(campaign=campaign):
+     if i.candiate.username in result:
+        result[i.candiate.username]+=1
+     else:
+        result[i.candiate.username]=1
+  print(result)
 
-  return render(request, 'campaigns/results.html', { 'campaign': campaign })
+  return render(request, 'campaigns/results.html', { 'campaign': campaign ,'result':result})
 
 # Vote for a campaign choice
 @login_required
