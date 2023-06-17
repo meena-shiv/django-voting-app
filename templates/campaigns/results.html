@@ -4,14 +4,12 @@
 <h1 class="mb-5 text-center">{{ campaign.campaign_text }}</h1>
 
 <ul class="list-group mb-5">
-	{% for choice in campaign.choice_set.all %}
+	{% for key, value in result.items %}
 	<li class="list-group-item">
-		{{ choice.choice_text }}  <span class="badge badge-success float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
+		{{ key }}  <span class="badge badge-success float-right">{{ value }} vote{{ value | pluralize }}</span>
 	</li>
 	{% endfor %}
 </ul>
-
-<div id="winner mb-5">Winner: Shiva</div>
 
 <div class="mb-4 mx-4">
 <a class="btn btn-info ml-4" href="{% url 'campaigns:home' %}">Back To campaigns</a>
